@@ -2,17 +2,23 @@ Package: BestSurvivalCuts
 Type: Package
 Title: The Best Survival Cuts
 Version: 0.1.0
-Author: Who wrote it
+Author: Payton Yau
 Maintainer: Payton Yau <tungon@gmail.com>
 Description: The `BestSurvivalCuts` package aids in finding optimal cutpoints in survival analysis. 
 License: Pending
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Imports: 
+    aod (>= 1.3.3),
     doParallel,
     doRNG,
     foreach,
+    KMsurv (>= 0.1.5),
+    pROC (>= 1.18.5),
     rgenoud,
-    survival,
-    xtable
+    splines (>= 4.4.3),
+    survival (>= 3.8.3),
+    xtable (>= 1.8.4)
+Depends: 
+    R (>= 3.5)
