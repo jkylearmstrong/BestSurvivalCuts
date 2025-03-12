@@ -12,12 +12,11 @@
 #'
 #' @examples
 #' ## Analyzing survival data
-#' findcutnum(factor = BMI, outcome = cbind(event, OS), datatype = "survival", nmin = 5, segment = 100)
+#' findcutnum(factor = exdata$BMI, outcome = cbind(exdata$event, exdata$OS), datatype = "survival", nmin = 5, segment = 100)
 #'
 #' ## Analyzing logistic data
-#' findcutnum(factor = invasion, outcome = LVSI, datatype = "logistic", nmin = 5, segment = 100)
+#' findcutnum(factor = exdata$invasion, outcome = exdata$LVSI, datatype = "logistic", nmin = 5, segment = 100)
 #'
-#' @export
 #'
 #' @references
 #' Chang, C., Hsieh, M. K., Chang, W. Y., Chiang, A. J., & Chen, J. (2017). Determining the optimal number and location of cutoff points with application to data of cervical cancer. PloS one, 12(4), e0176231.
@@ -28,12 +27,13 @@
 #' @keywords
 #' cut points, optimal cut-offs, AIC, survival analysis, logistic regression
 #'
-#'#' @author Payton Yau (Package Development)
+#' @author Payton Yau (Package Development)
 #'
 #' @family findcut
 #'
 #' @rdname findcutnum
 #'
+#' @export findcutnum
 
 # Function to find the optimal cut number for a given dataset
 findcutnum = function(factor, outcome, datatype, nmin = 20, segment = 100) {

@@ -2,7 +2,7 @@
 % Please edit documentation in R/findcutCox.R
 \name{findcutCox}
 \alias{findcutCox}
-\title{findcutCox}
+\title{FindcutCox: Find Optimal Cut Points for Cox Regression}
 \usage{
 findcutCox(
   target,
@@ -17,16 +17,84 @@ findcutCox(
   gap = NULL
 )
 }
+\arguments{
+\item{target}{A vector containing the continuous variable of interest.}
+
+\item{event}{A vector indicating whether an event (e.g., death) occurred.}
+
+\item{time}{A vector containing the time to the event or censoring.}
+
+\item{confound}{An optional data frame of confounding variables.}
+
+\item{numcut}{The number of cut points to find.}
+
+\item{initial_rr}{Optional initial values for relative risks.}
+
+\item{initial_cut}{Optional initial values for cut points.}
+
+\item{initial_domain}{Optional initial domain range for optimization.}
+
+\item{numgen}{The number of generations for the genetic algorithm.}
+
+\item{gap}{The gap between cut points.}
+}
+\value{
+A list containing the following components:
+\describe{
+  \item{like}{The likelihood of the Cox regression model.}
+  \item{cutpvalue}{The p-values for the cut points.}
+  \item{beta}{The coefficients of the Cox regression model.}
+  \item{overallstatisice.cross}{The overall statistic for Cox regression with or without confounding variables.}
+  \item{chiWald}{The Wald statistics for the model coefficients.}
+  \item{cut}{The optimal cut points.}
+}
+}
 \description{
-find the optimal location of cutpoints for a continuous variable
+This function finds the optimal location of cutpoints for a continuous variable in the context of Cox regression.
 }
 \examples{
-## example for no initial values
-findcutCox(BMI,Death,Death_surtime,stage3,numcut=3,initial_rr=NULL,initial_cut=NULL,initial_domain=NULL,numgen=15,gap=NULL)
-## example for giving initial values
-findcutCox(BMI, Death, Death_surtime, stage3, numcut=3, initial_rr=initial_rr,initial_cut=initial_cut, initial_domain=initial_domain, numgen=15, gap=NULL)
-## example for no initial values (numcut=2，repercenting finding the best 2 cutoffs)
-findcutCox(BMI,Death,Death_surtime,confound=NULL,numcut=2,initial_rr=NULL,initial_cut=NULL,initial_domain=NULL,numgen=15,gap=NULL)
-## example for no initial values (numcut=2，repercenting finding the best 2 cutoffs)
-findcutCox(BMI,Death, Death_surtime, confound=NULL, numcut=2, initial_rr=initial_rr,initial_cut=initial_cut,initial_domain=initial_domain,numgen=15,gap=NULL)
+## Example without initial values
+findcutCox(toydata$BMI, toydata$Death, toydata$Death_surtime, toydata$stage3, numcut = 3, initial_rr = NULL, initial_cut = NULL, initial_domain = NULL, numgen = 15, gap = NULL)
+
+## Example with initial values
+findcutCox(toydata$BMI, toydata$Death, toydata$Death_surtime, toydata$stage3, numcut = 3, initial_rr = initial_rr, initial_cut = initial_cut, initial_domain = initial_domain, numgen = 15, gap = NULL)
+
+## Example without initial values (finding the best 2 cutoffs)
+findcutCox(toydata$BMI, toydata$Death, toydata$Death_surtime, confound = NULL, numcut = 2, initial_rr = NULL, initial_cut = NULL, initial_domain = NULL, numgen = 15, gap = NULL)
+
+## Example with initial values (finding the best 2 cutoffs)
+findcutCox(toydata$BMI, toydata$Death, toydata$Death_surtime, confound = NULL, numcut = 2, initial_rr = initial_rr, initial_cut = initial_cut, initial_domain = initial_domain, numgen = 15, gap = NULL)
+
+
+# Load required libraries
+libraries1 <- c("rgenoud", "survival", "foreach", "doParallel", "doRNG", "xtable")
+lapply(libraries1, library, quietly = TRUE, character.only = TRUE)
+
+# Create example data
+BMI <- rnorm(100)
+Death <- sample(0:1, 100, replace = TRUE)
+Death_surtime <- rexp(100)
+stage3 <- rnorm(100)
+
+# Example usage of findcutCox
+result <- findcutCox(BMI, Death, Death_surtime, stage3, numcut = 3, initial_rr = NULL, initial_cut = NULL, initial_domain = NULL, numgen = 15, gap = NULL)
+
+# Print the results
+print(result)
+
 }
+\references{
+Chang, C., Hsieh, M. K., Chang, W. Y., Chiang, A. J., & Chen, J. (2017). Determining the optimal number and location of cutoff points with application to data of cervical cancer. PloS one, 12(4), e0176231.
+}
+\seealso{
+\code{\link{aictest}}, \code{\link{maxloglik}}, \code{\link{initial}}, \code{\link{domain_range}}, \code{\link{obj}}
+
+\code{\link{aictest}}, \code{\link{maxloglik}}, \code{\link{initial}}, \code{\link{domain_range}}, \code{\link{obj}}
+}
+\author{
+Payton Yau (Package Development)
+}
+\concept{Cox Regression}
+\keyword{cox-regression}
+\keyword{optimization}
+\keyword{survival-analysis}

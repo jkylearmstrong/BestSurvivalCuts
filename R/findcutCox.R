@@ -25,16 +25,16 @@
 #'
 #' @examples
 #' ## Example without initial values
-#' findcutCox(BMI, Death, Death_surtime, stage3, numcut = 3, initial_rr = NULL, initial_cut = NULL, initial_domain = NULL, numgen = 15, gap = NULL)
+#' findcutCox(toydata$BMI, toydata$Death, toydata$Death_surtime, toydata$stage3, numcut = 3, initial_rr = NULL, initial_cut = NULL, initial_domain = NULL, numgen = 15, gap = NULL)
 #'
 #' ## Example with initial values
-#' findcutCox(BMI, Death, Death_surtime, stage3, numcut = 3, initial_rr = initial_rr, initial_cut = initial_cut, initial_domain = initial_domain, numgen = 15, gap = NULL)
+#' findcutCox(toydata$BMI, toydata$Death, toydata$Death_surtime, toydata$stage3, numcut = 3, initial_rr = initial_rr, initial_cut = initial_cut, initial_domain = initial_domain, numgen = 15, gap = NULL)
 #'
 #' ## Example without initial values (finding the best 2 cutoffs)
-#' findcutCox(BMI, Death, Death_surtime, confound = NULL, numcut = 2, initial_rr = NULL, initial_cut = NULL, initial_domain = NULL, numgen = 15, gap = NULL)
+#' findcutCox(toydata$BMI, toydata$Death, toydata$Death_surtime, confound = NULL, numcut = 2, initial_rr = NULL, initial_cut = NULL, initial_domain = NULL, numgen = 15, gap = NULL)
 #'
 #' ## Example with initial values (finding the best 2 cutoffs)
-#' findcutCox(BMI, Death, Death_surtime, confound = NULL, numcut = 2, initial_rr = initial_rr, initial_cut = initial_cut, initial_domain = initial_domain, numgen = 15, gap = NULL)
+#' findcutCox(toydata$BMI, toydata$Death, toydata$Death_surtime, confound = NULL, numcut = 2, initial_rr = initial_rr, initial_cut = initial_cut, initial_domain = initial_domain, numgen = 15, gap = NULL)
 #'
 #'
 #' @seealso \code{\link{aictest}}, \code{\link{maxloglik}}, \code{\link{initial}}, \code{\link{domain_range}}, \code{\link{obj}}

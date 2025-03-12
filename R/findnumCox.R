@@ -20,9 +20,8 @@
 #'   \item{Cutpvalue}{A list of cutpoint p-values for different models with varying numbers of cutpoints.}
 #'
 #' @examples
-#' findnumCox(BMI, Death, Death_surtime, confound = stage3, numcross = 20, totalcut = 3)
+#' findnumCox(toydata$BMI, toydata$Death, toydata$Death_surtime, confound = toydata$stage3, numcross = 20, totalcut = 3)
 #'
-#' @export
 #'
 #' @import rgenoud
 #' @import survival
@@ -43,7 +42,7 @@
 #' @examples
 #' findnumCox(BMI, Death, Death_surtime, confound = stage3, numcross = 20, totalcut = 3)
 #'
-#' @export
+#' @export findnumCox
 
 
 # Load necessary libraries

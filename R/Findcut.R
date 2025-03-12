@@ -14,29 +14,22 @@
 #'   - For "survival" analysis: A list containing various statistics related to cut-off point selection.
 #'   - For "logistic" analysis: A list containing various statistics related to cut-off point selection.
 #'
+#' @import survival KMsurv xtable splines pROC aod
+#'
 #' @examples
-#' findcut(factor = BMI, outcome = cbind(event, OS), cutnum = 2, datatype = "survival", nmin = 5, segment = 100)
-#' findcut(factor = invasion, outcome = LVSI, cutnum = 2, datatype = "logistic", nmin = 5, segment = 100)
+#' findcut(factor = exdata$BMI, outcome = cbind(exdata$event, exdata$OS), cutnum = 2, datatype = "survival", nmin = 5, segment = 100)
+#' findcut(factor = exdata$invasion, outcome = exdata$LVSI, cutnum = 2, datatype = "logistic", nmin = 5, segment = 100)
 #'
-#' @export
 #'
-#' @seealso [Other functions or packages that are related to this one.]
 #'
 #' @references
 #' Chang, C., Hsieh, M. K., Chang, W. Y., Chiang, A. J., & Chen, J. (2017). Determining the optimal number and location of cutoff points with application to data of cervical cancer. PloS one, 12(4), e0176231.
 #'
 #' @keywords survival analysis," "logistic regression
 #'
-#' @family [The package family, if applicable.]
-#'
-#' @note [Any additional notes or comments.]
-#'
 #' @author Payton Yau (Package Development)
 #'
-#' @copyright [Copyright information, if applicable.]
-#'
-#' @license [License information, if applicable.]
-#'
+#' @export findcut
 
 findcut= function(factor=NULL,outcome=NULL,cutnum=NA,datatype=c("survival","logistic"),nmin=20,segment=100)
 {

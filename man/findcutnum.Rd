@@ -6,12 +6,48 @@
 \usage{
 findcutnum(factor, outcome, datatype, nmin = 20, segment = 100)
 }
+\arguments{
+\item{factor}{The continuous risk factor to be analyzed.}
+
+\item{outcome}{The outcome data. For survival data, it should be a matrix with two columns: event and time. For logistic data, it should be a vector.}
+
+\item{datatype}{The type of data: "survival" for survival data or "logistic" for logistic data.}
+
+\item{nmin}{The minimum number of subjects in each group when finding cut-off points.}
+
+\item{segment}{The number of segments used to search for cut-off points within the data range.}
+}
+\value{
+A list containing the minimum AIC values for different cut-off numbers.
+}
 \description{
-find the optimal number of cut-off points for a continuous risk factor
+Find the optimal number of cut-off points for a continuous risk factor.
 }
 \examples{
-## Analyzing data from survival information
-findcutnum(factor=BMI, outcome=cbind(event,OS), datatype="survival", nmin=5, segment=100)
-## Analyzing data from survival information
-findcutnum(factor=invasion, outcome=LVSI, datatype="logistic", nmin=5, segment=100)
+## Analyzing survival data
+findcutnum(factor = exdata$BMI, outcome = cbind(exdata$event, exdata$OS), datatype = "survival", nmin = 5, segment = 100)
+
+## Analyzing logistic data
+findcutnum(factor = exdata$invasion, outcome = exdata$LVSI, datatype = "logistic", nmin = 5, segment = 100)
+
+
 }
+\references{
+Chang, C., Hsieh, M. K., Chang, W. Y., Chiang, A. J., & Chen, J. (2017). Determining the optimal number and location of cutoff points with application to data of cervical cancer. PloS one, 12(4), e0176231.
+}
+\seealso{
+See also \code{\link{cut}} and \code{\link{glm}}.
+}
+\author{
+Payton Yau (Package Development)
+}
+\concept{findcut}
+\keyword{AIC,}
+\keyword{analysis,}
+\keyword{cut}
+\keyword{cut-offs,}
+\keyword{logistic}
+\keyword{optimal}
+\keyword{points,}
+\keyword{regression}
+\keyword{survival}

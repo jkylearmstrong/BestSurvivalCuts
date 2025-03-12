@@ -2,7 +2,7 @@
 % Please edit documentation in R/findnumCox.R
 \name{findnumCox}
 \alias{findnumCox}
-\title{findnumCox}
+\title{Find the optimal number of cutpoints}
 \usage{
 findnumCox(
   target,
@@ -18,9 +18,59 @@ findnumCox(
   gap = 0.03
 )
 }
+\arguments{
+\item{target}{A numeric vector containing the target variable (e.g., survival times).}
+
+\item{event}{A binary numeric vector indicating whether an event (e.g., death) occurred.}
+
+\item{time}{A numeric vector representing the time to the event.}
+
+\item{confound}{An optional data frame of confounding variables.}
+
+\item{numcross}{An integer specifying the number of cross-validations to perform.}
+
+\item{totalcut}{An integer specifying the total number of cuts to consider.}
+
+\item{initial_rr}{An optional numeric vector specifying initial relative risk values for each cutpoint.}
+
+\item{initial_cut}{An optional numeric vector specifying initial cutpoint values.}
+
+\item{initial_domain}{An optional list containing initial parameter domains.}
+
+\item{numgen}{An integer specifying the number of generations for the genetic algorithm.}
+
+\item{gap}{An optional numeric value specifying the gap between cutpoints.}
+}
+\value{
+A list containing the following elements:
+  \item{aic}{A list of AIC values for different models with varying numbers of cutpoints.}
+  \item{HR}{A list of hazard ratios for different models with varying numbers of cutpoints.}
+  \item{Cutpvalue}{A list of cutpoint p-values for different models with varying numbers of cutpoints.}
+}
 \description{
-find the optimal number of cutpoints
+This function finds the optimal number of cutpoints for a survival analysis based on user-defined input.
 }
 \examples{
-findnumCox(BMI,Death,Death_surtime,confound = stage3,numcross=20,totalcut=3,initial_rr=NULL,initial_cut=NULL,initial_domain=NULL,numgen=10,gap=NULL)
+findnumCox(toydata$BMI, toydata$Death, toydata$Death_surtime, confound = toydata$stage3, numcross = 20, totalcut = 3)
+
+
+findnumCox(BMI, Death, Death_surtime, confound = stage3, numcross = 20, totalcut = 3)
+
 }
+\references{
+Chang, C., Hsieh, M. K., Chang, W. Y., Chiang, A. J., & Chen, J. (2017). Determining the optimal number and location of cutoff points with application to data of cervical cancer. PloS one, 12(4), e0176231.
+}
+\seealso{
+Include any related functions or packages.
+}
+\author{
+Payton Yau (Package Development)
+}
+\keyword{AIC,}
+\keyword{algorithm,}
+\keyword{analysis,}
+\keyword{cutpoints}
+\keyword{genetic}
+\keyword{hazard}
+\keyword{ratio,}
+\keyword{survival}

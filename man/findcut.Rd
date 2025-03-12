@@ -13,10 +13,42 @@ findcut(
   segment = 100
 )
 }
+\arguments{
+\item{factor}{The continuous risk factor.}
+
+\item{outcome}{The outcome variable. For survival analysis, it should be a matrix with two columns: event and time.
+For logistic regression, it should be a binary outcome vector.}
+
+\item{cutnum}{The number of cut-off points to find.}
+
+\item{datatype}{The type of analysis to perform, either "survival" or "logistic".}
+
+\item{nmin}{The minimum number of observations in each group after cutting.}
+
+\item{segment}{The number of segments to divide the continuous risk factor.}
+}
+\value{
+A list of results depending on the analysis type:
+  - For "survival" analysis: A list containing various statistics related to cut-off point selection.
+  - For "logistic" analysis: A list containing various statistics related to cut-off point selection.
+}
 \description{
-determines the best location of cut-off points for a continuous risk factor use contingency tables (X^2) approach
+Determines the best location of cut-off points for a continuous risk factor using contingency tables (X^2) approach.
 }
 \examples{
-findcut(factor=BMI, outcome=cbind (event,OS), cutnum=2, datatype = "survival", nmin=5, segment=100)
-findcut(factor=invasion, outcome=LVSI, cutnum=2, datatype = "logistic", nmin=5, segment=100)
+findcut(factor = exdata$BMI, outcome = cbind(exdata$event, exdata$OS), cutnum = 2, datatype = "survival", nmin = 5, segment = 100)
+findcut(factor = exdata$invasion, outcome = exdata$LVSI, cutnum = 2, datatype = "logistic", nmin = 5, segment = 100)
+
+
+
 }
+\references{
+Chang, C., Hsieh, M. K., Chang, W. Y., Chiang, A. J., & Chen, J. (2017). Determining the optimal number and location of cutoff points with application to data of cervical cancer. PloS one, 12(4), e0176231.
+}
+\author{
+Payton Yau (Package Development)
+}
+\keyword{"logistic}
+\keyword{analysis,"}
+\keyword{regression}
+\keyword{survival}
