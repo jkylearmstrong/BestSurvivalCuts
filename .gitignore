@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+BestSurvivalCuts.Rcheck/
+BestSurvivalCuts*.tar.gz
+BestSurvivalCuts*.tgz
