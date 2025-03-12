@@ -329,7 +329,7 @@ The [original publication](https://journals.plos.org/plosone/article?id=10.1371/
 The example to run for `findnumCox` and  `findcutCox` can be found in [the tutorial](https://github.com/paytonyau/BestSurvivalCuts/blob/main/Tuturial/).
 
 
-"BioTranslate: Turning Bioscience Publications into Packages" is a mini project dedicated to bridging the gap between publised models to packages in the field of biosciences.
+"BioTranslate: Turning Bioscience Publications into Packages" is a mini project dedicated to bridging the gap between published models to packages in the field of biosciences.
 
 ## References
 Chang, C., Hsieh, M. K., Chang, W. Y., Chiang, A. J., & Chen, J. (2017). Determining the optimal number and location of cutoff points with application to data of cervical cancer. PloS one, 12(4), e0176231.
