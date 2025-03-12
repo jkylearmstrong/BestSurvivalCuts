@@ -36,7 +36,6 @@
 #' ## Example with initial values (finding the best 2 cutoffs)
 #' findcutCox(BMI, Death, Death_surtime, confound = NULL, numcut = 2, initial_rr = initial_rr, initial_cut = initial_cut, initial_domain = initial_domain, numgen = 15, gap = NULL)
 #'
-#' @export
 #'
 #' @seealso \code{\link{aictest}}, \code{\link{maxloglik}}, \code{\link{initial}}, \code{\link{domain_range}}, \code{\link{obj}}
 #'
@@ -69,13 +68,12 @@
 #' print(result)
 #'
 #' @seealso \code{\link{aictest}}, \code{\link{maxloglik}}, \code{\link{initial}}, \code{\link{domain_range}}, \code{\link{obj}}
+#'
+#' @export findcutCox
+
 
 # Function to find optimal cut points for Cox regression
 findcutCox <- function(target, event, time, confound = NULL, numcut, initial_rr = NULL, initial_cut = NULL, initial_domain = NULL, numgen, gap = NULL) {
-
-  # Load required libraries
-  libraries1 <- c("rgenoud", "survival", "foreach", "doParallel", "doRNG", "xtable")
-  lapply(libraries1, library, quietly = TRUE, character.only = TRUE)
 
   # Set global confound variable
   confound <<- confound

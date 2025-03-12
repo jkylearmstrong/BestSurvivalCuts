@@ -49,9 +49,6 @@
 # Load necessary libraries
 findnumCox <- function(target, event, time, confound, numcross, totalcut = 3, initial_rr = NULL,
                        initial_cut = NULL, initial_domain = NULL, numgen, gap = 0.03) {
-  libraries1 <- c("rgenoud", "survival", "foreach", "doParallel", "doRNG", "xtable")
-  lapply(libraries1, library, quietly = TRUE, character.only = TRUE)
-
   # Set global variables
   confound <<- confound
 
